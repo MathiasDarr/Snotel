@@ -17,12 +17,20 @@ public class DynamoDBConfig {
     private String dynamoEndpoint;
 
     @Bean
-    public AmazonDynamoDB amazonDynamoDB() {
-        return  AmazonDynamoDBClientBuilder.standard()
-                .withEndpointConfiguration(
-                        new AwsClientBuilder.EndpointConfiguration(dynamoEndpoint, region))
-                .withCredentials(new DefaultAWSCredentialsProviderChain())
+    public AmazonDynamoDB amazonDynamoDB(){
+        return AmazonDynamoDBClientBuilder.standard()
+                .withRegion("us-west-2")
                 .build();
     }
+
+
+//    @Bean
+//    public AmazonDynamoDB amazonDynamoDB() {
+//        return  AmazonDynamoDBClientBuilder.standard()
+//                .withEndpointConfiguration(
+//                        new AwsClientBuilder.EndpointConfiguration(dynamoEndpoint, region))
+//                .withCredentials(new DefaultAWSCredentialsProviderChain())
+//                .build();
+//    }
 
 }

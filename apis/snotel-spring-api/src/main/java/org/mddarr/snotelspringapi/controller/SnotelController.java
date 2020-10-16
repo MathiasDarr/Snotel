@@ -17,17 +17,12 @@ public class SnotelController {
 
     @Autowired
     private SnotelService snotelService;
-
-//    @RequestMapping("snotel")
-//    public List<SnotelData> getSnotelLocation(@RequestParam("id") String id) {
-//        return snotelService.getSnotelLocationDate(id);
-//    }
-//
-//    @RequestMapping("snotel-dates")
-//    public List<SnotelData> getSnotelLocationBetweenDates(@RequestParam("id") String id, @RequestParam("sdate") String sdate, @RequestParam("edate") String edate) {
-//        List<SnotelData> snotelData = snotelService.getSnotelLocationBetweenDates(id, sdate, edate);
-//        return snotelData;
-//    }
+    
+    @RequestMapping("snotel")
+    public List<SnotelData> getSnotelLocationBetweenDates(@RequestParam("id") String locationID, @RequestParam("sdate") String sdate, @RequestParam("edate") String edate) {
+        List<SnotelData> snotelData = snotelService.getSnotelDataBetweenDates(locationID, sdate, edate);
+        return snotelData;
+    }
 
     @RequestMapping("locations")
     public List<Location> getLocations(){

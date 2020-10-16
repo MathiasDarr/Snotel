@@ -20,9 +20,13 @@ public class SnotelService {
         this.snotelRepository = snotelRepository;
 
     }
-    
+
     public List<Location> getLocations(){
         return locationRepository.fetchALlLocations().stream().map(SnotelService::mapLocation).collect(Collectors.toList());
+    }
+
+    public List<SnotelData> getSnotelDataBetweenDates(String locationID, String sdate, String edate) {
+        return snotelRepository.getSnotelLocationBetweenDates(locationID, sdate, edate).stream().map(SnotelService::mapSnotelData).collect(Collectors.toList());
     }
 
     private static Location mapLocation(LocationRepository.LocationEntity entity) {

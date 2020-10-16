@@ -19,11 +19,10 @@ public class LocationRepository {
     private static final Logger log = LoggerFactory.getLogger(LocationRepository.class);
 
     private final AmazonDynamoDB amazonDynamoDB;
-    private final DynamoDBMapper mapper;
+
 
     public LocationRepository(AmazonDynamoDB db){
         this.amazonDynamoDB = db;
-        this.mapper = new DynamoDBMapper(amazonDynamoDB);
     }
 
 //    public List<LocationRepository.LocationEntity> fetchLocations(){
