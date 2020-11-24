@@ -17,9 +17,9 @@ public class SnotelController {
 
     @Autowired
     private SnotelService snotelService;
-    
+
     @RequestMapping("snotel")
-    public List<SnotelData> getSnotelLocationBetweenDates(@RequestParam("id") String locationID, @RequestParam("sdate") String sdate, @RequestParam("edate") String edate) {
+    public List<SnotelData> getSnotelLocationBetweenDates(@RequestParam("location") String locationID, @RequestParam("sdate") String sdate, @RequestParam("edate") String edate) {
         List<SnotelData> snotelData = snotelService.getSnotelDataBetweenDates(locationID, sdate, edate);
         return snotelData;
     }

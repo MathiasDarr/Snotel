@@ -1,15 +1,27 @@
-import json
+"""For some reason the event has different keys for the query parameters depending if the event is coming from sam
+local rest api or for the cloud deployment
+
+sam local expects -> event['queryStringParameters']
+
+otherwise the event looks like = event['queryParams']
+"""
 import boto3
 
+dynamodb_client = boto3.client('dynamodb', region_name='us-west-2')
 
-def lambda_handler(event, context):
-    dynamodb_client = boto3.client('dynamodb', region_name='us-west-2')
+
+def query_snotel(location, sdate, edate):
+    """
+    This function queries the Snotel dynamoDB table w/ partition key location between dates sdate and edate
+    :param location:
+    :param sdate: Starting date of range to query over
+    :param edate: Ending date of range to query over
+    :return:
+    """
+
     items = []
-    try:
-        location = event['queryParams']['location']
-        sdate = event['queryParams']['sdate']
-        edate = event['queryParams']['edate']
 
+    try:
         response = dynamodb_client.query(
             TableName='Snotel',
             KeyConditionExpression='LocationID = :LocationID and SnotelDate BETWEEN :sdate and :edate',
@@ -20,7 +32,6 @@ def lambda_handler(event, context):
             }
         )
         items = response['Items']
-
     except Exception as e:
         print(e)
 
@@ -36,9 +47,16 @@ def lambda_handler(event, context):
         data_dictionary['snowPctMedian'] = int(items[i]['SnowPctMedian']['N'])
         data.append(data_dictionary)
 
+    return data
+
+
+def lambda_handler(event, context):
+    location = event['queryParams']['location']
+    sdate = event['queryParams']['sdate']
+    edate = event['queryParams']['edate']
+
+    data = query_snotel(location, sdate, edate)
     return {
         "statusCode": 200,
         "body": data,
     }
-
-

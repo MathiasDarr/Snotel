@@ -18,7 +18,6 @@ public class SnotelService {
     public SnotelService(LocationRepository locationRepository, SnotelRepository snotelRepository){
         this.locationRepository = locationRepository;
         this.snotelRepository = snotelRepository;
-
     }
 
     public List<Location> getLocations(){

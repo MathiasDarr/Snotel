@@ -19,7 +19,7 @@ public class DynamoDBConfig {
     @Bean
     public AmazonDynamoDB amazonDynamoDB(){
         return AmazonDynamoDBClientBuilder.standard()
-                .withRegion("us-west-2")
+                .withRegion(region)
                 .build();
     }
 

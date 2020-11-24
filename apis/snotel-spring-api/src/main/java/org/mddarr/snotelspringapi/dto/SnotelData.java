@@ -19,6 +19,4 @@ public class SnotelData {
     private double waterCurrent;
     private double waterMedian;
     private double waterPctMedian;
-
-
 }

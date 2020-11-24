@@ -13,5 +13,4 @@ import java.util.List;
 public class Location {
     String locationID;
     long elevation;
-
 }

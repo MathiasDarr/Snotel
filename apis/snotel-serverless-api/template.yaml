@@ -9,8 +9,7 @@ Resources:
     Properties:
       StageName: Prod
       DefinitionUri: ./swagger.yaml
-      BinaryMediaTypes:
-        - application/audio
+
 
   SnotelQueryFunction:
     Type: AWS::Serverless::Function

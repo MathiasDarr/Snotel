@@ -36,7 +36,6 @@ public class SnotelRepository {
         return snotelData;
     }
 
-
     @DynamoDBTable(tableName=TABLE)
     @Data
     @AllArgsConstructor
@@ -58,6 +57,5 @@ public class SnotelRepository {
         private double waterMedian;
         @DynamoDBAttribute(attributeName = "WaterPctAverage")
         private double waterPctMedian;
-
     }
 }

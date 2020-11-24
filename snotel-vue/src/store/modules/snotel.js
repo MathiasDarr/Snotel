@@ -54,8 +54,8 @@ const actions = {
         var location = query.location
 
         console.log(query.location)
-        var url = window.__runtime_configuration.snotelAPI +'/snotel?location='+ location+'&sdate='+parsedSDate+'&edate='+parsedEDate    
-
+        // var url = window.__runtime_configuration.snotelAPI +'/snotel?location='+ location+'&sdate='+parsedSDate+'&edate='+parsedEDate    
+        var url = 'https://xief80gnle.execute-api.us-west-2.amazonaws.com/Prod/'+'/snotel?location='+ location+'&sdate='+parsedSDate+'&edate='+parsedEDate
         axios.get(url).then((response) => {
           var response_string = JSON.stringify(response.data.body)
           var data = JSON.parse(response_string)
